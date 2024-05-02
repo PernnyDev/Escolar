@@ -13,9 +13,9 @@
                         <input type="text" id="nome" name="nome" placeholder="Nome do Aluno" class="form-control">
                         <br>
                         <label for="turma">Turma:</label>
-                        <select name="fk_turma" class="custom-select">
+                        <select name="descricao"  class="custom-select">
                             {{#each turmas}}
-                            <option value="{{id_turma}}">{{descricao}}</option>
+                            <option value="{{descricao}}">{{descricao}}</option>
                             {{else}}
                             <option value="0">Nenhuma turma registrada</option>
                             {{/each}}

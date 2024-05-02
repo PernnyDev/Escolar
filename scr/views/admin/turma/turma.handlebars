@@ -9,18 +9,18 @@
             {{#each turmas}}
             <div class="card mt-4">
                 <div class="card-body">
-                    <h4><b>ID:</b>{{id_turma}}</h4>
+                    <h4><b>ID:</b>{{_id}}</h4>
                     <small><b>Descrição:</b> {{descricao}}</small>
                     <br>
  
                     <!--Botão para editar turma-->
-                    <a href="/rota_turma/editar_turma/{{id_turma}}">
+                    <a href="/rota_turma/editar_turma/{{_id}}">
                         <button class="btn btn-success mt-3">
                             Editar turma
                         </button>
                     </a>
                     <!-- btn para deletar turma-->
-                    <a href="/rota_turma/deletar_turma/{{id_turma}}">
+                    <a href="/rota_turma/deletar_turma/{{_id}}">
                     <button class="btn btn-danger mt-3">
                         Deletar turma
                     </button>
