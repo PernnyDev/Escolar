@@ -40,7 +40,7 @@ do id passado */
 router.get("/editar_tarefas/:id", (req, res) => {
   Tarefas.findOne({ _id: req.params.id })
     .lean()
-    .then((tarefas) => {
+    .then((alunos) => {
       res.render("admin/tarefas/edittarefas", { tarefa: tarefas });
     });
 });

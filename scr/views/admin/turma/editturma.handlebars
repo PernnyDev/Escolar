@@ -5,15 +5,15 @@
             <div class="card">
                 <div class="card-body">
                     <form action="/rota_turma/turma/editar_turma" method="POST">
-                        {{#each turmas}}
+                        {{#if turmas}}
                         <label for="id_turma">ID: </label>
-                        <input type="text" name="id_turma" readonly="true" class="form-control" value="{{id_turma}}">
+                        <input type="text" name="id_turma" readonly="true" class="form-control" value="{{turmas._id}}">
                         <br>
                         <label for="descricao">Descrição: </label>
-                        <input type="text" id="descricao" name="descricao" class="form-control" value="{{descricao}}">
+                        <input type="text" id="descricao" name="descricao" class="form-control" value="{{turmas.descricao}}">
                         <br>
                         <button type="submit" class="btn btn-success">Editar turma</button>
-                        {{/each}}
+                        {{/if}}
                     </form>
                 </div>
             </div>

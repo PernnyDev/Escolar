@@ -31,11 +31,11 @@ router.get("/aluno/add", (req, res) => {
 });
 /* 4°) Abre e preenche o formulário editaluno.handlebars com informações do id passado */
 router.get("/editar_aluno/:id", (req, res) => {
-  Tarefas.findOne({ _id: req.params._id })
+  Aluno.findOne({ _id: req.params.id })
     .lean()
     .then((alunos) => {
       //pega as turmas cadastradas para popular o select do html
-      res.render("admin/aluno/editaluno");
+      res.render("admin/aluno/editaluno", { alunos: alunos });
     });
 });
 

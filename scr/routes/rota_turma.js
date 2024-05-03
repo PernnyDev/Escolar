@@ -20,7 +20,7 @@ router.get("/turma/add", (req, res) => {
 });
 
 router.get("/editar_turma/:id", (req, res) => {
-  Turma.findOne({ _id: req.params._id })
+  Turma.findOne({ _id: req.params.id })
     .lean() 
     .then((turmas) => {
       res.render("admin/turma/editturma", { turmas: turmas });
@@ -47,7 +47,7 @@ router.post("/turma/nova", (req, res) => {
 
 router.post("/turma/editar_turma", (req, res) => {
   Turma.updateOne(
-    { _id: req.body._id },
+    { _id: req.body.id_turma },
     {
       $set: {
         descricao: req.body.descricao,
@@ -63,7 +63,7 @@ router.post("/turma/editar_turma", (req, res) => {
 });
 
 router.get("/deletar_turma/:id", (req, res) => {
-  Turma.deleteMany({_id:  req.params._id})
+  Turma.deleteMany({_id:  req.params.id})
     .then(() => {
       res.redirect("/rota_turma/turmas");
     })
