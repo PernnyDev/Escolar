@@ -11,6 +11,7 @@ const router = express.Router();
 /*2°) Abre e carrega todas informações do aluno no formulário aluno.handlebars */
 router.get("/alunos", (req, res) => {
   Aluno.find()
+    .sort({ _id: -1 })
     .lean()
     .then((alunos) => {
       res.render("admin/aluno/aluno", { alunos: alunos });
@@ -35,7 +36,14 @@ router.get("/editar_aluno/:id", (req, res) => {
     .lean()
     .then((alunos) => {
       //pega as turmas cadastradas para popular o select do html
-      res.render("admin/aluno/editaluno", { alunos: alunos });
+      Turma.find()
+        .lean()
+        .then((turmas) => {
+          res.render("admin/aluno/editaluno", {
+            alunos: alunos,
+            turmas: turmas,
+          });
+        });
     });
 });
 
@@ -60,9 +68,13 @@ router.post("/aluno/nova", (req, res) => {
 e efetua a alteração no banco de dados. Volta para listagem de alunos */
 router.post("/aluno/editar_aluno", (req, res) => {
   Aluno.updateOne(
-    {_id:req.body._id},
+    { _id: req.body._id },
     {
-      $set: { nome: req.body.nome,matricula: req.body.matricula, descricao: req.body.descricao},
+      $set: {
+        nome: req.body.nome,
+        matricula: req.body.matricula,
+        descricao: req.body.descricao,
+      },
     }
   )
     .then(() => {
@@ -75,7 +87,7 @@ router.post("/aluno/editar_aluno", (req, res) => {
 /* 7°) No form aluno.handlebars que lista os alunos possui um botão para deletar 
 Ele deleta informação e refaz a lista no aluno.handlebars */
 router.get("/deletar_aluno/:id", (req, res) => {
-  Aluno.deleteMany({ _id: req.params.id  })
+  Aluno.deleteMany({ _id: req.params.id })
     .then(() => {
       res.redirect("/rota_aluno/alunos");
     })

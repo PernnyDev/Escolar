@@ -18,8 +18,9 @@
                         {{/if}}
                         <label for="turma">Turma:</label>
                         <select name="fk_turma" class="custom-select">
+                            <option value="{{alunos.descricao}} ">{{alunos.descricao}}</option>
                             {{#each turmas}}
-                            <option value="{{descricao}}">{{descricao}}</option>
+                            <option value="{{descricao}} ">{{descricao}}</option>
                             {{else}}
                             <option value="0">Nenhuma turma registrada</option>
                             {{/each}}

@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/turmas", (req, res) => {
   Turma.find()
     .lean()
+    .sort({ _id: -1 })
     .then((turmas) => {
       res.render("admin/turma/turma", { turmas: turmas });
     })
