@@ -36,7 +36,7 @@ router.get("/editar_aluno/:id", (req, res) => {
     .lean()
     .then((alunos) => {
       //pega as turmas cadastradas para popular o select do html
-      Turma.find()
+      Turma.find({ descricao: { $ne: alunos.descricao } })
         .lean()
         .then((turmas) => {
           res.render("admin/aluno/editaluno", {
